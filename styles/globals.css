@@ -24,8 +24,9 @@ body {
       rgb(var(--background-end-rgb))
     )
     rgb(var(--background-start-rgb)); */
-  background: url('../public/assets/blackpapermd.png');
-  background-position: center;
+  background: url('../public/blackpapermd.png');
+  background-position: top;
+  background-color: black;
 }
 
 @layer components{
@@ -41,5 +42,11 @@ body {
     transform: translateY(-50%);
     font-size: 2.3rem;
     color: rgb(173, 172, 172); /* Adjust color as needed */
+  }
+}
+
+@media (min-width:668px){
+  body{
+    background-image: url('../public/black-bg.png');
   }
 }

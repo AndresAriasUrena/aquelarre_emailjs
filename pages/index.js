@@ -1,10 +1,127 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
-import { Subscribe} from './components'
+// import { Subscribe} from '../public/assets/components'
 
 const inter = Inter({ subsets: ['latin'] })
 
+import {useState, useRef, useEffect} from 'react';
+import emailjs from '@emailjs/browser';
+
+
+
+// template_huvytlz
+// service_eeaz1ie
+// ryvK7pl1EHrprowrV
+//kzD1•••••••••••••••••
+
+
+const Subscribe = () => {
+    const formRef = useRef();
+    const [form, setForm] = useState({
+        name: '',
+        email: '',
+    });
+    const [loading, setLoading] = useState(false);
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+
+        setForm({...form, [name]: value})
+
+    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        console.log('Subscribed with email');
+        setLoading(true);
+
+        emailjs.send('service_eeaz1ie', 
+            'template_huvytlz',
+            {
+                from_name: form.name,
+                to_name: 'Aquelarre',
+                from_email: form.email,
+                to_email: 'andres@mainlydigitalworks.com',
+                message: 'Un nuevo suscriptor!',
+            },
+            'ryvK7pl1EHrprowrV',
+            )
+            .then(() =>{
+                setLoading(false);
+                alert('Gracias por suscribirte!');
+                setForm({
+                    name: '',
+                    email: '',
+                })
+            }, (error) => {
+                setLoading(false);
+                console.log(error);
+                alert('Algo ha salido mal.')
+            })
+    }
+
+    return(
+        <div>
+            <form 
+              ref={formRef}
+              onSubmit={handleSubmit}
+              className='flex flex-col gap-4'
+              >
+                <input
+                  type='text'
+                  name='name'
+                  value={form.name}
+                  onChange={handleChange}
+                  placeholder='Escribí tu nombre aquí'
+                  className='py-1 px-4 rounded-lg outlined-none border-none text-black w-full'
+                  />
+                <div className='email-input-container'>
+                <input
+                  type='email'
+                  name='email'
+                  value={form.email}
+                  onChange={handleChange}
+                  placeholder='Escribí tu correo aquí'
+                  className='py-1 pl-9 rounded-lg outlined-none border-none text-black'
+                  >
+                  </input>
+                </div>
+                <button
+                  type='submit'
+                  className='bg-red-600 hover:bg-purple-900 rounded-lg py-1 px-[8px] max-w-[60%] self-center'
+                  >
+                    {loading ? 'Enviando...' : 'Suscribirme'}
+                  </button>
+            </form>
+        </div>
+    )
+}
+
 export default function Home() {
+
+  const [windowWidth, setWindowWidth] = useState(0);
+
+  useEffect(() =>{
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  const treshold = 668;
+
+  const imageUrl = windowWidth > treshold
+    ? '/img/LunaLlenaDesktop.png'
+    : '/img/LunaLlenaMovil2.png';
+
+  const subscibeUrl = windowWidth > treshold
+  ? "img/suscribite-big.svg"
+  : "img/suscribite.svg";
+
+
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-around ${inter.className}`}
@@ -34,20 +151,28 @@ export default function Home() {
         </div>
       </div> */}
 
-      <div className='flex flex-col items-center -mt-8'>
+      <div className='flex flex-col items-center'>
+        <Image
+          className="relative max-h-96"
+          src={imageUrl}
+          alt="¿Qué harás la próxima luna llena?"
+          width={1251}
+          height={394}
+          priority
+        />
         <Image
           className="relative"
-          src="/assets/LunaLlenaMovil.png"
-          alt="¿Qué harás la próxima luna llena?"
+          src='/img/ojos.png'
+          alt="Ojos"
           width={500}
           height={37}
           priority
         />
-        <div className='px-8 -mt-4'>
+        <div className='px-8 mt-8'>
           <Image
             className="relative text-center"
-            src="/assets/suscribite.svg"
-            alt="¿Qué harás la próxima luna llena?"
+            src={subscibeUrl}
+            alt="Suscribite"
             width={400}
             height={37}
             priority
@@ -56,7 +181,7 @@ export default function Home() {
         <div className='px-24 pt-4'>
           <Image
             className="relative text-center"
-            src="/assets/malasuerte.png"
+            src="/img/malasuerte.png"
             alt="O tendras mala suerte"
             width={300}
             height={37}
@@ -64,7 +189,7 @@ export default function Home() {
           />
         </div>
       </div>
-      <div className='max-w-[80%]'>
+      <div className='max-w-[80%] pb-8'>
         <Subscribe/>
       </div>
 
