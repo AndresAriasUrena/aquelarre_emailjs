@@ -81,7 +81,7 @@ const Subscribe = () => {
                   value={form.email}
                   onChange={handleChange}
                   placeholder='Escribí tu correo aquí'
-                  className='py-1 pl-9 rounded-lg outlined-none border-none text-black'
+                  className='py-1 pl-8 rounded-lg outlined-none border-none text-black'
                   >
                   </input>
                 </div>
