@@ -28,6 +28,10 @@ body {
   background-position: top;
   background-color: black;
 }
+.main{
+  max-height: 100vh;
+  overflow-y: auto;
+}
 
 @layer components{
   .email-input-container {
@@ -59,7 +63,7 @@ body {
   }
 }
 
-@media (min-width:668px){
+@media (min-width:500px){
   body{
     background-image: url('../public/black-bg.png');
   }
