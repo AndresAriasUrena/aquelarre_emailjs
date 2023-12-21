@@ -7,7 +7,8 @@ const inter = Inter({ subsets: ['latin'] })
 import {useState, useRef, useEffect} from 'react';
 import emailjs from '@emailjs/browser';
 
-
+import { PostCard, Categories, PostWidget } from '../components/';
+import{ getPosts } from '../services';
 
 // template_huvytlz
 // service_eeaz1ie
@@ -96,7 +97,7 @@ const Subscribe = () => {
     )
 }
 
-export default function Home() {
+const Footer = () =>{
 
   const [windowWidth, setWindowWidth] = useState(0);
 
@@ -124,7 +125,7 @@ export default function Home() {
 
 
   return (
-    <main
+    <div
       className={`flex min-h-screen flex-col items-center justify-around ${inter.className}`}
     >
       {/* <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">
@@ -193,6 +194,39 @@ export default function Home() {
       <div className='max-w-[80%] pb-8'>
         <Subscribe/>
       </div>
+    </div>
+  )
+}
+
+
+
+export default function Home({posts}) {
+  return (
+    <main>
+      <div className='containter mx-auto px-10 mb-8'>
+        <div className='grid grid-cols-1 lg:grid-cols-12 gap-12'>
+          <div className='lg:col-span-8 col-span-1'>
+            {posts.map((post, index) => <PostCard post={post.node} key={post.titulo}/>)}
+          </div>
+          <div className='lg:col-span-4 col-span-1'>
+            <div className='lg:sticky relative top-8'>
+              <PostWidget/>
+              <Categories/>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        {/* <Footer/> */}
+      </footer>
     </main>
   )
+}
+
+export async function getStaticProps() {
+  const posts = (await getPosts()) || [];
+
+  return {
+    props: {posts}
+  }
 }
