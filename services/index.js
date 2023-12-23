@@ -64,7 +64,7 @@ export const getSimilarPosts = async (categorias, slug) =>{
     const query = gql`
         query GetPostDetails($slug: String!, $categorias: [String!]){
             posts(
-                where: { slug_not: slug, AND: {categories_some: { slug_in: $categorias}}}
+                where: {slug_not: $slug, AND: {categorias_some: {slug_in: $categorias}}}
                 last: 3
             ){
                 titulo
@@ -75,8 +75,8 @@ export const getSimilarPosts = async (categorias, slug) =>{
                 slug
             }
         }
-    `
-    const result = await request(graphqlAPI, query);
+    `;
+    const result = await request(graphqlAPI, query, {categorias, slug});
 
     return result.posts;
 }
@@ -93,4 +93,51 @@ export const getCategories = async () => {
     const result = await request(graphqlAPI, query);
 
     return result.categorias;
+}
+
+export const getPostsDetails = async (slug) =>{
+    const query = gql `
+        query GetPostDetails($slug: String!) {
+            post(where: {slug: $slug }){
+                autor {
+                    bio
+                    nombre
+                    id
+                    foto {
+                        url
+                    }
+                }
+                createdAt
+                slug
+                titulo
+                extracto
+                imagenPresentacion {
+                    url
+                }
+                categorias {
+                    name
+                    slug
+                }
+                contenido {
+                    raw
+                }
+            }
+        }
+    `;
+
+    const result = await request(graphqlAPI, query, {slug});
+
+    return result.post;
+}
+
+export const submitComment = async (obj) => {
+    const result = await fetch('/api/comments', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(obj),
+    });
+
+    return result.json();
 }
