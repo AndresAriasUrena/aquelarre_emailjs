@@ -6,11 +6,11 @@ import { getPosts, getPostsDetails} from '../../services'
 import { PostDetail, Categories, PostWidget, Author, Comments, CommentsForm, Loader} from '../../components'
 
 const PostDetails = ({post}) => {
-  // const router = useRouter();
+  const router = useRouter();
 
-  // if(router.isFallback){
-  //   return <Loader/>
-  // }
+  if(router.isFallback){
+    return <Loader/>
+  }
 
   return (
     <>
@@ -51,6 +51,6 @@ export async function getStaticPaths() {
     const posts = await getPosts();
     return {
       paths: posts.map(({ node: { slug } }) => ({ params: { slug } })),
-      fallback: false,
+      fallback: true,
     };
   }
