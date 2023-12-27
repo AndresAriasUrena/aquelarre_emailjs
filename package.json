@@ -11,6 +11,7 @@
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
     "cloudinary": "^1.41.0",
+    "dynamic": "^4.2.2",
     "graphql": "^16.8.1",
     "graphql-request": "^6.1.0",
     "html-react-parser": "^5.0.10",

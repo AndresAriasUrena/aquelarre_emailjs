@@ -7,9 +7,16 @@ const inter = Inter({ subsets: ['latin'] })
 import {useState, useRef, useEffect} from 'react';
 import emailjs from '@emailjs/browser';
 
-import { PostCard, Categories, PostWidget } from '../components/';
+// import { PostCard, Categories, PostWidget } from '../components/';
+import { Categories, PostWidget } from '../components/';
 import{ getPosts } from '../services';
-import {FeaturedPosts} from '../sections/';
+// import {FeaturedPosts} from '../sections/';
+
+import dynamic from 'next/dynamic';
+ 
+const PostCard = dynamic(()=> import('../components/PostCard'));
+const FeaturedPosts = dynamic(()=> import('../sections/FeaturedPosts'));
+
 
 // template_huvytlz
 // service_eeaz1ie
@@ -204,11 +211,11 @@ const Footer = () =>{
 export default function Home({posts}) {
   return (
     <main>
-      <div className='containter mx-auto px-10 mb-8'>
+      <div className='container mx-auto px-10 mb-8'>
         <FeaturedPosts/>
         <div className='grid grid-cols-1 lg:grid-cols-12 gap-12'>
           <div className='lg:col-span-8 col-span-1'>
-            {posts.map((post, index) => <PostCard post={post.node} key={post.node.slug} />)}
+            {posts.reverse().map((post, index) => <PostCard post={post.node} key={post.node.slug} />)}
           </div>
           <div className='lg:col-span-4 col-span-1'>
             <div className='lg:sticky relative top-8'>
