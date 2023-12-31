@@ -8,14 +8,14 @@ import {useState, useRef, useEffect} from 'react';
 import emailjs from '@emailjs/browser';
 
 // import { PostCard, Categories, PostWidget } from '../components/';
-import { Categories, PostWidget } from '../components/';
+import { Categories, PostWidget, UltimasNoticias } from '../components/';
 import{ getPosts } from '../services';
 // import {FeaturedPosts} from '../sections/';
 
 import dynamic from 'next/dynamic';
  
 const PostCard = dynamic(()=> import('../components/PostCard'));
-const FeaturedPosts = dynamic(()=> import('../sections/FeaturedPosts'));
+// const FeaturedPosts = dynamic(()=> import('../sections/FeaturedPosts'));
 
 
 // template_huvytlz
@@ -212,7 +212,9 @@ export default function Home({posts}) {
   return (
     <main>
       <div className='container mx-auto px-10 mb-8'>
-        <FeaturedPosts/>
+
+        <UltimasNoticias/>
+        
         <div className='grid grid-cols-1 lg:grid-cols-12 gap-12'>
           <div className='lg:col-span-8 col-span-1'>
             {posts.reverse().map((post, index) => <PostCard post={post.node} key={post.node.slug} />)}
@@ -228,6 +230,7 @@ export default function Home({posts}) {
       <footer>
         {/* <Footer/> */}
       </footer>
+      {/* <FeaturedPosts/> */}
     </main>
   )
 }
