@@ -2,16 +2,15 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
 
-const GridCarousel = dynamic(() => import ('../sections/GridCarousel'));
-
+const BlogGrid = dynamic(() => import ('../sections/GridCarousel'));
 
 
 const TodasLasNoticias = () => {
   return (
     <div className='grid grid-cols-1 lg:grid-cols-12 gap-12 text-white'>
-        <div className='lg:col-span-8 col-span-1 h-[626px] overflow-y-auto'>
-            {/* <h1 className='uppercase font-semibold text-center lg:text-left text-xl mb-2'>Todas Las Noticias</h1> */}
-            <GridCarousel/>
+        <div className='lg:col-span-8 col-span-1 max-h-[626px]'>
+            <h1 className='uppercase font-semibold text-center lg:text-left text-xl mb-2'>Todas Las Noticias</h1>
+            <BlogGrid/>
             <Image
                     unoptimized
                     alt={'click aqui para mas noticias'}
