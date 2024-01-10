@@ -211,7 +211,7 @@ const Footer = () =>{
 export default function Home({posts}) {
   return (
     <main>
-      <div className='container mx-auto px-10 mb-8'>
+      <div className='container mx-auto pt-16 lg:pt-0 px-10 mb-8'>
 
         <UltimasNoticias/>
         <TodasLasNoticias/>

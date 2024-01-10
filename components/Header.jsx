@@ -1,10 +1,46 @@
 import React, {useContext, useState, useEffect} from 'react';
+import Image from 'next/image';
 
 import Link from 'next/link';
 
 import { getCategories } from '../services';
 
+const navLinks = [
+    {
+        label: 'Noticias',
+        href: '/',
+    },
+    {
+        label: 'Podcast: El oráculo',
+        href: '/',
+    },
+    {
+        label: 'Agenda Cultural',
+        href: '/',
+    },
+    {
+        label: 'Mercado',
+        href: '/',
+    },
+    {
+        label: 'Oportunidades',
+        href: '/',
+    },
+]
+
+const menuBg ='/img/menu-bg.png';
+
 const Header = () => {
+    // const navLinkDiv = document.querySelector('.nav-links');
+
+    const [showMenu,setshowMenu] = useState(false);
+
+    function toggleMenu() {
+        setshowMenu(!showMenu);
+        console.log('toggle');
+        // navLinkDiv.classList.toggle('right-[0%]')
+    }
+
     const [categories, setCategories] = useState([]);
     
     useEffect(() => {
@@ -12,17 +48,65 @@ const Header = () => {
       .then((newCategories) => setCategories(newCategories))
     }, [])
 
+    
   return (
     <div className='container mx-auto px-10 mb-8'>
-        <div className='border-b w-full inline-block border-blue-400 py-8'>
-            <div className='md:float-left block'>
-                <Link href='/'>
-                    <span className='cursor-pointer font-bold text-4xl text-white'>
+        {showMenu && (
+            <div style={{ backgroundImage: ` url(${menuBg})`}}
+                 className='nav-links fixed flex items-left p-20 flex-col justify-evenly bg-left bg-norepeat bg-cover z-20 h-full w-full text-white uppercase right-[100%] translate-x-full overflow-hidden'
+            >
+                <Link onClick={toggleMenu} href='/'>
+                    {/* <span className='cursor-pointer font-bold text-4xl text-white'>
                         Aquelarre
-                    </span>
+                    </span> */}
+                    <Image
+                        unoptimized
+                        alt={'aquelarre logo'}
+                        height={125}
+                        width={250}
+                        className='cursor-pointer'
+                        src='/img/logo.png'
+                    />
                 </Link>
+                {navLinks.map((navlink, index) => (
+                    <Link key={index} 
+                        className='' 
+                        href={navlink.href}
+                        onClick={toggleMenu} 
+                        >
+                            {navlink.label} 
+                    </Link>
+                ))}
             </div>
-            <div className='hidden md:float-left md:contents'>
+
+        )}
+        <div className='w-full inline-block py-4'>
+            <div className='hidden lg:flex justify-between text-white items-center uppercase'>
+                <Link href='/'>
+                    {/* <span className='cursor-pointer font-bold text-4xl text-white'>
+                        Aquelarre
+                    </span> */}
+                    <Image
+                        unoptimized
+                        alt={'aquelarre logo'}
+                        height={100}
+                        width={200}
+                        className='cursor-pointer'
+                        src='/img/logo.png'
+                    />
+                </Link>
+                {navLinks.map((navlink, index) => (
+                    <Link key={index} className='' href={navlink.href}>
+                        {navlink.label}
+                    </Link>
+                ))}
+                {/* <Link href='/'><span>Noticias</span></Link>
+                <Link href='/'><span>Podcast: el oráculo</span></Link>
+                <Link href='/'><span>Agenda Cultural</span></Link>
+                <Link href='/'><span>Mercado</span></Link>
+                <Link href='/'><span>Oportunidades</span></Link> */}
+            </div>
+            {/* <div className='hidden md:float-left md:contents'>
                 {categories.map((categoria) =>(
                     <Link key={categoria.slug} href={`/category/${categoria.slug}`}>
                         <span className='md:float-right mt-2 align-middle text-white ml-4 font-semibold cursor-pointer'>
@@ -30,7 +114,18 @@ const Header = () => {
                         </span>
                     </Link>
                 ))}
-            </div>
+            </div> */}
+
+            <button onClick={toggleMenu} className='fixed right-5 lg:hidden z-40'>
+                <Image
+                    unoptimized
+                    alt='menu movil'
+                    height={85}
+                    width={35}
+                    className='align-middle'
+                    src='/img/icono-menu.png'
+                />
+            </button>
         </div>
     </div>
   );

@@ -70,7 +70,7 @@ const NoticiasSlider = () => {
           responsive={responsive} 
           itemClass="px-2"
         >
-          {dataLoaded && featuredPosts.map((post, index) => (
+          {dataLoaded && featuredPosts.reverse().map((post, index) => (
             <FeaturedPostCard key={index} post={post} />
           ))}
         </Carousel>
