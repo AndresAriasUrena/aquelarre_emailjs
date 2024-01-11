@@ -207,7 +207,7 @@ const BlogGrid = () => {
 
   return (
     <div className="mb-8">
-      <div className={`grid grid-cols-2 md:grid-cols-3 gap-4`}>
+      <div className='grid grid-cols-3 gap-4 overflow-y-hidden'>
         {visiblePosts.map((post, index) => (
           <PostGridCard key={index} post={post} />
         ))}

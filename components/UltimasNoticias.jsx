@@ -27,6 +27,7 @@ const UltimasNoticias = () => {
             width={350}
             className='absolute left-0 top-0 lg:hidden'
             src= '/img/gato-rojo-salem.png'
+            priority
         />
     <h1 className='uppercase font-semibold text-center lg:text-left text-xl mb-2'>Ultimas Noticias</h1>
         <NoticiasSlider/>

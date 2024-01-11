@@ -4,7 +4,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 const PostGridCard = ({post}) => (
-    <div className="relative h-40">
+    <div className="relative col-span-1 h-40">
       <div className="absolute bg-center bg-no-repeat bg-cover shadow-md inline-block w-full h-32" style={{ backgroundImage: `url('${post.imagenPresentacion.url}')` }} />
       <div className="absolute bg-center bg-gradient-to-b opacity-50 from-gray-400 via-gray-700 to-black w-full h-32" />
       <div className="flex flex-col rounded-lg items-left justify-end absolute w-full h-32">

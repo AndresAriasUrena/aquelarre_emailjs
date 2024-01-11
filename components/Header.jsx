@@ -56,7 +56,7 @@ const Header = () => {
             style={{ backgroundImage: `url(${menuBg})` }}
           >
             <Link onClick={toggleMenu} href='/'>
-              <Image unoptimized alt={'aquelarre logo'} height={125} width={250} className='cursor-pointer' src='/img/logo.png' />
+              <Image unoptimized alt={'aquelarre w-auto logo'} height={125} width={250} className='cursor-pointer' src='/img/logo.png' />
             </Link>
             {navLinks.map((navlink, index) => (
               <Link key={index} className='' href={navlink.href} onClick={toggleMenu}>
