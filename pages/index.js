@@ -15,7 +15,8 @@ import {FeaturedPosts} from '../sections/';
 import dynamic from 'next/dynamic';
  
 const PostCard = dynamic(()=> import('../components/PostCard'));
-const UltimasNoticias = dynamic(()=> import('../components/UltimasNoticias'));
+const Hero = dynamic(()=> import('../components/Hero'));
+const LoUltimo = dynamic(()=> import('../components/LoUltimo.jsx'));
 const TodasLasNoticias = dynamic(()=> import('../components/TodasLasNoticias'));
 
 // const FeaturedPosts = dynamic(()=> import('../sections/FeaturedPosts'));
@@ -216,7 +217,10 @@ export default function Home({posts}) {
   // console.log(posts);
   return (
     <main>
-      <div className='container mx-auto pt-24 lg:pt-0 px-10 mb-8'>
+      <div className='container mx-auto pt-8 lg:pt-0 px-8 mb-8 lg:px-0 lg:mb-0'>
+
+        <Hero/>
+        <LoUltimo/>
 
         {/* <UltimasNoticias/>
         <TodasLasNoticias posts={posts}/> */}

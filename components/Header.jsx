@@ -66,7 +66,7 @@ const Header = () => {
             ))}
           </div>
     
-          <div className='w-full inline-block py-4'>
+          <div className='w-full inline-block lg:py-4'>
             <div className='hidden lg:flex justify-between text-white items-center uppercase'>
               <Link href='/'>
                 <Image unoptimized alt={'aquelarre logo'} height={100} width={200} className='cursor-pointer' src='/img/logo.png' />
