@@ -62,19 +62,19 @@ const BlogGrid = ({posts}) => {
       <div className="mb-8">
         <div className={`grid grid-cols-2 md:grid-cols-3 gap-4 min-h-[590px]`}>
           {visiblePosts.map((post, index) => (
-            <div className={`col-span-1 bg-black h-40 w-auto post-item`}>
+            <div className={`col-span-1 h-40 w-auto post-item`}>
               <PostGridCard key={index} post={post.node} />
             </div>
           ))}
         </div>
-        <div className="">
+        <div className="z-20 relative">
           {startIdx > 0 && (
-            <button onClick={handleLoadPrevious} className="bg-red-600 w-8 h-8 cursor-pointer rounded-full text-center">
+            <button onClick={handleLoadPrevious} className="z-20 bg-red-600 w-8 h-8 cursor-pointer rounded-full text-center">
               &#10094;
             </button>
           )}
           {startIdx + postsPerLoad < allPosts.length && (
-            <button onClick={handleLoadMore} className='relative left-[100%] bg-red-600 w-8 h-8 cursor-pointer rounded-full text-center'>
+            <button onClick={handleLoadMore} className='z-20 relative left-[100%] bg-red-600 w-8 h-8 cursor-pointer  rounded-full text-center'>
               &#10095;
             </button>
           )}

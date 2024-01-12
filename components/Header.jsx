@@ -8,7 +8,7 @@ import { getCategories } from '../services';
 const navLinks = [
     {
         label: 'Noticias',
-        href: '/',
+        href: '/noticias',
     },
     {
         label: 'Podcast: El oráculo',
@@ -48,7 +48,8 @@ const Header = () => {
     }, [])
 
     return (
-        <div className='container mx-auto px-10 lg:py-4 lg:bg-[#141316]'>
+      //lg:bg-[#141316]
+        <div className='container mx-auto px-10 lg:py-4'>
           <div
             className={`nav-links fixed flex items-left p-20 flex-col justify-evenly bg-left bg-norepeat bg-cover z-40 h-full w-full text-white uppercase ${
               showMenu ? 'right-0 translate-x-0' : 'right-[-100%] translate-x-full'

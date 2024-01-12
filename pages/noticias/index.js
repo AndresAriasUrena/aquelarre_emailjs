@@ -8,15 +8,15 @@ import {useState, useRef, useEffect} from 'react';
 import emailjs from '@emailjs/browser';
 
 // import { PostCard, Categories, PostWidget } from '../components/';
-import { Categories, PostWidget } from '../components/';
-import{ getPosts } from '../services';
-import {FeaturedPosts} from '../sections/';
+import { Categories, PostWidget } from '../../components';
+import{ getPosts } from '@/services';
+import {FeaturedPosts} from '@/sections/';
 
 import dynamic from 'next/dynamic';
  
-const PostCard = dynamic(()=> import('../components/PostCard'));
-const UltimasNoticias = dynamic(()=> import('../components/UltimasNoticias'));
-const TodasLasNoticias = dynamic(()=> import('../components/TodasLasNoticias'));
+const PostCard = dynamic(()=> import('@/components/PostCard'));
+const UltimasNoticias = dynamic(()=> import('@/components/UltimasNoticias'));
+const TodasLasNoticias = dynamic(()=> import('@/components/TodasLasNoticias'));
 
 // const FeaturedPosts = dynamic(()=> import('../sections/FeaturedPosts'));
 
@@ -211,15 +211,15 @@ const Footer = () =>{
 
 
 
-export default function Home({posts}) {
+export default function Noticias({posts}) {
   // console.log('home');
   // console.log(posts);
   return (
     <main>
       <div className='container mx-auto pt-24 lg:pt-0 px-10 mb-8'>
 
-        {/* <UltimasNoticias/>
-        <TodasLasNoticias posts={posts}/> */}
+        <UltimasNoticias/>
+        <TodasLasNoticias posts={posts}/>
 
         
         <div className='grid grid-cols-1 lg:grid-cols-12 gap-12'>
