@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link';
 
 import {useState, useRef, useEffect} from 'react';
 import emailjs from '@emailjs/browser';
@@ -57,9 +58,9 @@ const Subscribe = () => {
         <form
           ref={formRef}
           onSubmit={handleSubmit}
-          className='grid gap-4 max-w-md mx-auto md:grid-cols-2 md:grid-rows-2 md:gap-2'
+          className='grid gap-4 max-w-md mx-auto md:grid-cols-3 md:grid-rows-2 md:gap-2'
         >
-          <div className='md:col-start-1 md:row-start-1'>
+          <div className='md:col-start-1 md:col-span-2 md:row-start-1'>
             <input
               type='text'
               name='name'
@@ -69,20 +70,21 @@ const Subscribe = () => {
               className='py-1 px-4 rounded-lg outlined-none border-none text-black w-full'
             />
           </div>
-          <div className='md:col-start-1 md:col-span-1 md:row-start-2'>
+          <div className='email-input-container md:col-start-1 md:col-span-2 md:row-start-2'>
             <input
+              required
               type='email'
               name='email'
               value={form.email}
               onChange={handleChange}
               placeholder='Escribí tu correo aquí'
-              className='py-1 px-4 rounded-lg outlined-none border-none text-black w-full'
+              className='py-1 pl-8 rounded-lg outlined-none border-none text-black w-full'
             />
           </div>
-          <div className='grid md:flex md:col-start-2 md:row-start-2 justify-flex-end'>
+          <div className='grid md:flex md:col-start-3 md:row-start-2 justify-flex-end'>
             <button
               type='submit'
-              className='bg-[#100F12] hover:bg-[#4f36cc] text-white rounded-lg py-1 px-[8px] max-w-[60%] md:self-end justify-self-end'
+              className='bg-[#100F12] hover:bg-[#4f36cc] text-white rounded-lg py-1 px-[8px] md:max-w-[100%] max-w-[60%] md:self-end justify-self-end'
             >
               {loading ? 'Enviando...' : 'Suscribirme'}
             </button>
@@ -147,7 +149,7 @@ const Footer = () => {
     };
 
   return (
-    <div className='absolute w-full z-10 lg:translate-y-[-30%]'>
+    <div className='absolute w-full z-10 md:translate-y-[-30%]'>
     <Image 
         className='relative max-h-40 w-full md:hidden'
         src='/img/footer-top-mb.png'
@@ -161,23 +163,23 @@ const Footer = () => {
       className={`flex flex-col md:flex-col-reverse items-center md:w-full`}
       style={footerStyle}
     >
-      <div className='md:w-[50%] w-full md:flex md:gap-8 md:items-end md:ml-[11vw]'>
-      <div className='flex items-center'>
-        <div className='text-sm md:text-xs grid grid-rows-4 grid-flow-col gap-4 md:gap-2 mx-auto p-4 text-white text-transform: uppercase'>
-            <div>Nosotros</div>
-            <div>Contacto</div>
-            <div>Media Kit</div>
-            <div>Lit Inc</div>
-            <div>Instagram</div>
-            <div>Youtube</div>
-            <div>TikTok</div>
-            <div>Spotify</div>
+      <div className='md:w-[60%] lg:w-[50%] w-full md:flex md:items-end '>
+      <div className='flex items-center lg:w-[50%]'>
+        <div className='text-sm md:text-xs grid grid-rows-4 grid-flow-col gap-4 lg:gap-x-20 md:gap-y-2 mx-auto lg:mr-auto py-4 text-white text-transform: uppercase'>
+            <Link href={'/'}><div>Nosotros</div></Link>
+            <Link href={'/'}><div>Contacto</div></Link>
+            <Link href={'/'}><div>Media Kit</div></Link>
+            <Link href={'/'}><div>Lit Inc</div></Link>
+            <Link href={'https://www.instagram.com/aquelarre.crc/'} target={'_blank'}><div>Instagram</div></Link>
+            <Link href={'/'}><div>Youtube</div></Link>
+            <Link href={'/'}><div>TikTok</div></Link>
+            <Link href={'/'}><div>Spotify</div></Link>
         </div>
       </div>
-      <div className='flex flex-col items-center md:items-start container mx-auto'> 
+      <div className='flex flex-col items-center md:items-start container mx-auto lg:ml-auto md:w-[60%] lg:w-[50%]'> 
         <div className='flex flex-col items-center md:items-start px-4 md:px-0'>
             <Image 
-                className='relative max-h-40 max-w-xs w-full md:h-16 md:w-64'
+                className='relative max-h-40 max-w-xs w-full md:hidden lg:block lg:h-12 lg:w-auto'
                 src={footerNews}
                 alt='Newsletter'
                 width={300}
