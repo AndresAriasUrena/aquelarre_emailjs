@@ -48,9 +48,9 @@ const Header = () => {
     }, [])
 
     return (
-        <div className='container mx-auto px-10 mb-8'>
+        <div className='container mx-auto px-10 py-4 lg:bg-[#141316]'>
           <div
-            className={`nav-links fixed flex items-left p-20 flex-col justify-evenly bg-left bg-norepeat bg-cover z-20 h-full w-full text-white uppercase ${
+            className={`nav-links fixed flex items-left p-20 flex-col justify-evenly bg-left bg-norepeat bg-cover z-40 h-full w-full text-white uppercase ${
               showMenu ? 'right-0 translate-x-0' : 'right-[-100%] translate-x-full'
             } overflow-hidden transition-transform ease-in-out`}
             style={{ backgroundImage: `url(${menuBg})` }}
@@ -77,7 +77,7 @@ const Header = () => {
               ))}
             </div>
     
-            <button onClick={toggleMenu} className='fixed right-5 lg:hidden z-40'>
+            <button onClick={toggleMenu} className='fixed right-5 lg:hidden z-50'>
               <Image unoptimized alt='menu movil' height={85} width={35} className='align-middle' src='/img/icono-menu.png' />
             </button>
           </div>

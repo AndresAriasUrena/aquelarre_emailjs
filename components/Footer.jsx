@@ -147,7 +147,7 @@ const Footer = () => {
     };
 
   return (
-    <div>
+    <div className='absolute w-full z-10 lg:translate-y-[-30%]'>
     <Image 
         className='relative max-h-40 w-full md:hidden'
         src='/img/footer-top-mb.png'

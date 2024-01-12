@@ -39,34 +39,36 @@ const PostDetail = ({post}) => {
       }
   }
   return (
-    <div className='bg-white shadow-lg rounded-lg lg:p-8 pb-12 mb-8'>
-        <div className='relative overflow-hidden shadow-md mb-6'>
-            <img
-                src={post.imagenPresentacion.url}
-                alt={post.titulo}
-                className='object-top h-full w-full rounded-t-lg'
-            />
-        </div>
-        <div className='px-4 lg:px-0'>
-            <div className='flex items-center mb-8 w-full'>
-                <div className='flex items-center mb-4 lg:mb-0 w-full lg:w-auto mr-8'>
-                    <img
+    <div className='bg-white shadow-lg rounded-lg p-4 lg:p-8 pb-12 mb-8' style={{backgroundImage: `url('../img/post-bg.png')`, backgroundSize: 'contain'}}>
+        <h1 className='uppercase text-[#4f36cc]'>Categoria: {post.categorias[0].name}</h1>
+        <h1 className='my-2 text-2xl lg:text-3xl font-semibold'>{post.titulo}</h1>
+        <div className='lg:px-0'>
+            <div className='flex items-center mb-8 w-auto'>
+                <div className='flex items-center mb-4 lg:mb-0 w-full lg:w-auto lg:mr-4'>
+                    {/* <img
                         alt={post.autor.nombre}
                         height='30px'
                         width='30px'
                         className='align-middle rounded-full'
                         src={post.autor.foto.url}
-                    />
-                    <p className='inline alignt-middle text-gray-700 ml-2 text-lg'>{post.autor.nombre}</p>
+                    /> */}
+                    <p className='inline align-middle text-gray-700 ml-2 text-sm lg:text-lg'>Por {post.autor.nombre}</p>
+                  <p className='font-medium text-gray-700 mx-2 inline align-middle'>|</p>
+                  <span className='font-medium text-gray-700 text-sm lg:text-md'>{moment(post.createdAt).format('DD MMM, YYYY')}</span>
                 </div>
-                <div className='font-medium text-gray-700'>
+                {/* <div className='font-medium text-gray-700'>
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 inline mr-2 text-pink-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                     </svg>
-                    <span>{moment(post.createdAt).format('DD MMM, YYYY')}</span>
-                </div>
+                </div> */}
             </div>
-            <h1 className='mb-8 text-3xl font-semibold'>{post.titulo}</h1>
+            <div className='relative overflow-hidden shadow-md mb-6'>
+                <img
+                    src={post.imagenPresentacion.url}
+                    alt={post.titulo}
+                    className='object-top h-full w-full'
+                />
+            </div>
             {post.contenido.raw.children.map((typeObj, index) =>{
                 const children = typeObj.children.map((item, itemIndex) => getContentFragment(itemIndex, item.text, item))
 

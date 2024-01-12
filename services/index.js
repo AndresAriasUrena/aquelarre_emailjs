@@ -41,12 +41,18 @@ export const getPosts = async () =>{
 
 export const getRecentPosts = async () => {
     const query = gql`
-      query GetPostDetails() {
+      query GetRecentPosts() {
         posts(
           orderBy: createdAt_ASC
           last: 3
         ) {
           titulo
+          autor {
+            nombre
+            foto {
+              url
+            }
+          }
           imagenPresentacion {
             url
           }
@@ -142,10 +148,38 @@ export const submitComment = async (obj) => {
     return result.json();
 }
 
-export const getFeaturedPosts = async () => {
+// export const getFeaturedPosts = async () => {
+//     const query = gql`
+//       query GetFeaturedPost() {
+//         posts(where: {featuredPost: true}) {
+//           autor {
+//             nombre
+//             foto {
+//               url
+//             }
+//           }
+//           imagenPresentacion {
+//             url
+//           }
+//           titulo
+//           slug
+//           createdAt
+//         }
+//       }   
+//     `;
+  
+//     const result = await request(graphqlAPI, query);
+  
+//     return result.posts;
+//   };
+
+export const getEditorialPosts = async () => {
     const query = gql`
-      query GetCategoryPost() {
-        posts(where: {featuredPost: true}) {
+      query GetEditorialPost() {
+        posts(
+          where: {featuredPost: true}
+          last:1
+          ) {
           autor {
             nombre
             foto {

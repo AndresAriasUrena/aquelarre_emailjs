@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import dynamic from 'next/dynamic';
 
 import { FeaturedPostCard } from '../components';
-import { getFeaturedPosts, getSimilarPosts } from '../services';
+import { getFeaturedPosts, getSimilarPosts, getRecentPosts } from '../services';
 
 const responsive = {
   superLargeDesktop: {
@@ -25,26 +26,34 @@ const responsive = {
 };
 
 const NoticiasSlider = () => {
-    const [featuredPosts, setFeaturedPosts] = useState([]);
+    // const [featuredPosts, setFeaturedPosts] = useState([]);
+    const [recentPosts, setRecentPosts] = useState([]);
     const [dataLoaded, setDataLoaded] = useState(false);
 
+    // useEffect(() => {
+    //   getFeaturedPosts().then((result) => {
+    //     setFeaturedPosts(result);
+    //     setDataLoaded(true);
+    //   });
+    // }, []);
+    
     useEffect(() => {
-      getFeaturedPosts().then((result) => {
-        setFeaturedPosts(result);
+      getRecentPosts().then((result) => {
+        setRecentPosts(result);
         setDataLoaded(true);
       });
     }, []);
 
     const customLeftArrow = (
-      <div className="absolute hidden arrow-btn  text-center py-3 cursor-pointer bg-red-600 rounded-full"
+      <div className="absolute hidden arrow-btn text-center py-3 cursor-pointer bg-red-600 rounded-full"
            style={{ 
             bottom: `0.5rem`,
             right: `5rem`,
             }}
-        >
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        >&#10094;
+        {/* <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white w-full" fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-        </svg>
+        </svg> */}
       </div>
     );
 
@@ -70,9 +79,10 @@ const NoticiasSlider = () => {
           responsive={responsive} 
           itemClass="px-2"
         >
-          {dataLoaded && featuredPosts.reverse().map((post, index) => (
+          {dataLoaded && recentPosts.map((post, index) => (
             <FeaturedPostCard key={index} post={post} />
           ))}
+          {/* <div>1</div> */}
         </Carousel>
       </div>
   );

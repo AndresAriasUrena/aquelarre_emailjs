@@ -3,19 +3,26 @@ import Image from 'next/image';
 import dynamic from 'next/dynamic';
 
 import { PostGridCard, FeaturedPostCard } from '../components';
-import { getFeaturedPosts, getSimilarPosts } from '../services';
+import { getFeaturedPosts, getSimilarPosts, getPosts } from '../services';
 
 // const BlogGrid = dynamic(() => import ('../sections/GridCarousel'));
 
-const BlogGrid = () => {
+const BlogGrid = ({posts}) => {
     const [windowWidth, setWindowWidth] = useState(0);
-    const [featuredPosts, setFeaturedPosts] = useState([]);
+    // const [featuredPosts, setFeaturedPosts] = useState([]);
+    // const [posts, setPosts] = useState([]);
 
-    useEffect(() => {
-      getFeaturedPosts().then((result) => {
-        setFeaturedPosts(result);
-      });
-    }, []);
+    // useEffect(() => {
+    //   getFeaturedPosts().then((result) => {
+    //     setFeaturedPosts(result);
+    //   });
+    // }, []);
+
+    // useEffect(() => {
+    //   getPosts().then((result) => {
+    //     setPosts(result);
+    //   });
+    // }, []);
     
     useEffect(() => {
         const handleResize = () => {
@@ -37,7 +44,10 @@ const BlogGrid = () => {
   
     // Sample data, replace this with your actual data
     // const allPosts = Array.from({ length: 20 }, (_, i) => `Post ${i + 1}`);
-    const allPosts = featuredPosts;
+    const allPosts = posts.reverse();
+    // const allPosts = featuredPosts;
+    // console.log('BlogGrid')
+    // console.log(allPosts);
     const visiblePosts = allPosts.slice(startIdx, startIdx + postsPerLoad);
   
     const handleLoadMore = () => {
@@ -53,19 +63,19 @@ const BlogGrid = () => {
         <div className={`grid grid-cols-2 md:grid-cols-3 gap-4 min-h-[590px]`}>
           {visiblePosts.map((post, index) => (
             <div className={`col-span-1 bg-black h-40 w-auto post-item`}>
-              <PostGridCard key={index} post={post} />
+              <PostGridCard key={index} post={post.node} />
             </div>
           ))}
         </div>
-        <div className="mt-4">
+        <div className="">
           {startIdx > 0 && (
-            <button onClick={handleLoadPrevious} className="mr-2">
-              Load Previous
+            <button onClick={handleLoadPrevious} className="bg-red-600 w-8 h-8 cursor-pointer rounded-full text-center">
+              &#10094;
             </button>
           )}
           {startIdx + postsPerLoad < allPosts.length && (
-            <button onClick={handleLoadMore}>
-              Load More
+            <button onClick={handleLoadMore} className='relative left-[100%] bg-red-600 w-8 h-8 cursor-pointer rounded-full text-center'>
+              &#10095;
             </button>
           )}
         </div>
@@ -74,33 +84,13 @@ const BlogGrid = () => {
   };
   
 
-const TodasLasNoticias = () => {
+const TodasLasNoticias = ({posts}) => {
   return (
     <div className='grid grid-cols-1 lg:grid-cols-12 gap-12 text-white'>
         <div className='lg:col-span-8 col-span-1 max-h-[626px]'>
             <h1 className='uppercase font-semibold text-center lg:text-left text-xl mb-2'>Todas Las Noticias</h1>
-            {/* <GridCarousel/> */}
-            <BlogGrid/>
-            {/* <div className="mb-8">
-                <div className='grid grid-cols-3 gap-4 max-h-[626px] overflow-y-auto'>
-                    {dataLoaded && featuredPosts.map((post, index) => (
-                        <PostGridCard key={index} post={post} />
-                    ))}
-                    <div className='col-span-1 bg-black h-40 w-auto'>01</div>
-                    <div className='col-span-1 bg-black h-40 w-auto'>02</div>
-                    <div className='col-span-1 bg-black h-40 w-auto'>03</div>
-                    <div className='col-span-1 bg-black h-40 w-auto'>04</div>
-                    <div className='col-span-1 bg-black h-40 w-auto'>05</div>
-                    <div className='col-span-1 bg-black h-40 w-auto'>06</div>
-                    <div className='col-span-1 bg-black h-40 w-auto'>07</div>
-                    <div className='col-span-1 bg-black h-40 w-auto'>08</div>
-                    <div className='col-span-1 bg-black h-40 w-auto'>09</div>
-                    <div className='col-span-1 bg-black h-40 w-auto'>10</div>
-                    <div className='col-span-1 bg-black h-40 w-auto'>11</div>
-                    <div className='col-span-1 bg-black h-40 w-auto'>12</div>
-                    <div className='col-span-1 bg-black h-40 w-auto'>13</div>
-                </div>
-            </div> */}
+            <BlogGrid posts={posts}/>
+            
             <Image
                     unoptimized
                     alt={'click aqui para mas noticias'}
