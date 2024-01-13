@@ -12,7 +12,7 @@ const ParticleCanvas = () => {
     const img = new Image();
     img.src = '../../img/Hero-img.png'; // Update with the correct path
 
-    const PARTICLE_DIAMETER = 3;
+    const PARTICLE_DIAMETER = 2;
 
     img.addEventListener('load', () => {
       canvas.width = img.width;

@@ -61,6 +61,34 @@ footer {
     width: 20px;
     height: 16px;
   }
+  .svg-hover{
+    display:block;
+  }
+  span:hover .svg-hover{
+    display: block;
+  }
+
+  .proximamente {
+    display: none;
+    width: 130px; /* Adjust the width as needed */
+    height: auto;
+  }
+
+  /* Show the image when the parent is hovered */
+  span:hover .proximamente {
+      display: block;
+  }
+  .noDisponible {
+    display: none;
+    width: 130px; /* Adjust the width as needed */
+    height: auto;
+  }
+
+  /* Show the image when the parent is hovered */
+  span:hover .noDisponible {
+      display: block;
+  }
+
 }
 
 @media (min-width:500px){

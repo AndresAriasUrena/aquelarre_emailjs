@@ -107,7 +107,7 @@ const TodasLasNoticias = ({posts}) => {
                     alt={'gato negro ojos rojos'}
                     height={600}
                     width={400}
-                    className='absolute hidden lg:block bottom-0'
+                    className='absolute translate-x-10 hidden lg:block bottom-0'
                     src='/img/gato-ojos-rojos.png'
                 />
                 <Image
@@ -115,7 +115,7 @@ const TodasLasNoticias = ({posts}) => {
                     alt={'gato negro ojos rojos'}
                     height={600}
                     width={400}
-                    className='relative lg:hidden block'
+                    className='relative transform -translate-x-10 lg:hidden block'
                     src='/img/gato-ojos-rojos-mb.png'
                 />
             </div>

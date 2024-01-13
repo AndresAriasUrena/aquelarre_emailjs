@@ -163,17 +163,17 @@ const Footer = () => {
       className={`flex flex-col md:flex-col-reverse items-center md:w-full`}
       style={footerStyle}
     >
-      <div className='md:w-[60%] lg:w-[50%] w-full md:flex md:items-end '>
+      <div className='md:w-[60%] lg:w-[50%] w-full md:flex md:items-end xl:pb-4'>
       <div className='flex items-center lg:w-[50%]'>
-        <div className='text-sm md:text-xs grid grid-rows-4 grid-flow-col gap-4 lg:gap-x-20 md:gap-y-2 mx-auto lg:mr-auto py-4 text-white text-transform: uppercase'>
-            <Link href={'/'}><div>Nosotros</div></Link>
-            <Link href={'/'}><div>Contacto</div></Link>
-            <Link href={'/'}><div>Media Kit</div></Link>
-            <Link href={'/'}><div>Lit Inc</div></Link>
+        <div className='text-sm font-semibold md:text-xs grid grid-rows-3 grid-flow-col gap-4 lg:gap-x-20 md:gap-y-2 mx-auto lg:mr-auto py-4 text-white text-transform: uppercase'>
+            {/* <Link href={'/'}><div>Nosotros</div></Link> */}
+            <Link href={'https://api.whatsapp.com/send?phone=50686134428'}><div>Contacto</div></Link>
+            {/* <Link href={'/'}><div>Media Kit</div></Link> */}
+            <Link href={'https://www.instagram.com/_lit_by_lit_?igsh=MTJtcDBia3dmaWxieg=='}><div>Lit Inc</div></Link>
             <Link href={'https://www.instagram.com/aquelarre.crc/'} target={'_blank'}><div>Instagram</div></Link>
-            <Link href={'/'}><div>Youtube</div></Link>
-            <Link href={'/'}><div>TikTok</div></Link>
-            <Link href={'/'}><div>Spotify</div></Link>
+            <Link href={'https://www.youtube.com/channel/UCgF-dbl_-dNJ2nHReBTFryA'}><div>Youtube</div></Link>
+            <Link href={'https://www.tiktok.com/@aquelarrecrc?_t=8izH28GJt38&_r=1'}><div>TikTok</div></Link>
+            <Link href={'https://open.spotify.com/user/31rog7ld647x3tvujn4bff2ou7hm?si=f0c24c456f0b481e&nd=1&dlsi=1043fa5bd0484ded'}><div>Spotify</div></Link>
         </div>
       </div>
       <div className='flex flex-col items-center md:items-start container mx-auto lg:ml-auto md:w-[60%] lg:w-[50%]'> 

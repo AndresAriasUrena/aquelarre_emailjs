@@ -47,7 +47,9 @@ const Hero = () => {
             height={241}
             priority
           />
-          <ParticleCanvas/>
+          <div className='hidden md:block'>
+            <ParticleCanvas/>
+          </div>
         </div>
         <div className='lg:row-start-11 row-start-6 row-span-4 h-auto lg:row-span-3 lg:m-auto flex items-center justify-center'>
           {/* Your image or content for the second section */}
