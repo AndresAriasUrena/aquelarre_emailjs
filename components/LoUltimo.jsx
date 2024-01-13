@@ -21,7 +21,7 @@ const LoUltimo = () => {
 
   return (
     <div
-      className=" relative h-[57rem] lg:h-screen bg-top -mt-8 bg-no-repeat bg-cover"
+      className=" relative h-auto lg:h-screen bg-top -mt-8 bg-no-repeat bg-cover"
       style={{ backgroundImage: `url('/img/loUltimo-bg.png')` }}
     >
         <div className='z-20 relative pt-16 xl:pt-24 grid grid-cols-1 lg:grid-cols-12 gap-12 text-white'>
@@ -61,7 +61,7 @@ const LoUltimo = () => {
                 alt={'bienvenides al primer aquelarre'}
                 height={150}
                 width={600}
-                className='relative col-span-2 lg:block lg:self-center justify-self-center'
+                className='relative md:mt-12 col-span-2 lg:block lg:self-start justify-self-center'
                 src={'/img/bienvenides.png'}
                 priority
             />

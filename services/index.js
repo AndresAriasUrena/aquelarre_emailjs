@@ -180,6 +180,7 @@ export const getEditorialPosts = async () => {
           where: {featuredPost: true}
           last:1
           ) {
+          extracto
           autor {
             nombre
             foto {

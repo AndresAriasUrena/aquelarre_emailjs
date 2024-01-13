@@ -149,7 +149,7 @@ const Footer = () => {
     };
 
   return (
-    <div className='absolute w-full z-10 md:translate-y-[-30%]'>
+    <div className='absolute w-full z-10 translate-y-[-10%] md:translate-y-[-30%]'>
     <Image 
         className='relative max-h-40 w-full md:hidden'
         src='/img/footer-top-mb.png'
@@ -187,7 +187,7 @@ const Footer = () => {
                 priority
             />
             <Image
-                className='relative max-h-20 max-w-md w-full'
+                className='relative max-h-20 max-w-md md:pt-2 w-full'
                 src={footerSus}
                 alt='Suscribete para promos'
                 width={460}
@@ -204,9 +204,19 @@ const Footer = () => {
             />
         </div>
         
-        <div className='w-[90vw] md:w-auto md:pb-4'>
+        <div className='w-[90vw] md:w-auto md:pb-4 md:pt-2'>
             <Subscribe/>
         </div>
+      </div>
+      <div>
+      <Image
+          className='absolute md:block max-h-28 -translate-x-4 hidden bottom-8'
+          src='/img/malasuerte.png'
+          alt='o tendras mala suerte'
+          width={250}
+          height={112}
+          priority
+      />
       </div>
       <div className='flex-grow w-full h-[20vh] md:hidden'></div>   
       </div>

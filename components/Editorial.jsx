@@ -38,7 +38,7 @@ const Editorial = ({post}) => {
             </div>
         </div>
     </div>
-    <p className='text-xs'>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero odio, magni ipsam molestias consequatur porro? Consectetur culpa at et...</p>
+    <p className='text-xs'>{post.extracto}</p>
     <Link href={`/post/${post.slug}`}>
       <span 
         className='bg-red-600 hover:bg-[#4f36cc] rounded-lg py-1 px-[8px] max-w-[60%] text-xs lg:self-start self-center'>

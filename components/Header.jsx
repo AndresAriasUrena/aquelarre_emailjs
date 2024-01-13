@@ -155,8 +155,8 @@ const Header = () => {
                 >
                   <span className='relative font-semibold'>
                     Podcast: El oráculo
-                    <div className='absolute top-1/2'>
-                    <Image unoptimized alt={'proximamente'} height={125} width={150} className='proximamente cursor-pointer' src={proximamente} />
+                    <div className='absolute -top-2'>
+                    <Image unoptimized alt={'proximamente'} height={200} width={300} className='proximamente cursor-pointer' src={proximamente} />
                     </div>
                   </span>
                 </Link>
@@ -166,8 +166,8 @@ const Header = () => {
                 >
                   <span className='relative font-semibold'>
                   Agenda Cultural
-                    <div className='absolute top-1/2'>
-                    <Image unoptimized alt={'noDisponible'} height={125} width={150} className='noDisponible cursor-pointer' src={noDisponible} />
+                    <div className='absolute top-0'>
+                    <Image unoptimized alt={'noDisponible'} height={125} width={200} className='noDisponible cursor-pointer' src={noDisponible} />
                     </div>
                   </span>
                 </Link>
@@ -177,8 +177,8 @@ const Header = () => {
                 >
                   <span className='relative font-semibold'>
                     Mercado
-                    <div className='absolute top-1/2'>
-                    <Image unoptimized alt={'noDisponible'} height={125} width={150} className='noDisponible cursor-pointer' src={noDisponible} />
+                    <div className='absolute top-0'>
+                    <Image unoptimized alt={'noDisponible'} height={125} width={200} className='noDisponible cursor-pointer' src={noDisponible} />
                     </div>
                   </span>
                 </Link>
@@ -188,8 +188,8 @@ const Header = () => {
                 >
                   <span className='relative font-semibold'>
                     Oportunidades
-                    <div className='absolute top-1/2'>
-                    <Image unoptimized alt={'noDisponible'} height={125} width={150} className='noDisponible cursor-pointer' src={noDisponible} />
+                    <div className='absolute top-0'>
+                    <Image unoptimized alt={'noDisponible'} height={125} width={200} className='noDisponible cursor-pointer' src={noDisponible} />
                     </div>
                   </span>
                 </Link>
