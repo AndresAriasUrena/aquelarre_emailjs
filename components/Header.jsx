@@ -175,7 +175,7 @@ const Header = () => {
                   className=''
                   href={'/'}
                 >
-                  <span className='relative font-semibold'>
+                  <span className='relative px-[40px] font-semibold'>
                     Mercado
                     <div className='absolute top-0'>
                     <Image unoptimized alt={'noDisponible'} height={125} width={200} className='noDisponible cursor-pointer' src={noDisponible} />

@@ -54,7 +54,7 @@ const Hero = () => {
         <div className='lg:row-start-11 row-start-6 row-span-4 h-auto lg:row-span-3 lg:m-auto flex items-center justify-center'>
           {/* Your image or content for the second section */}
           <Image
-            className='relative text-center max-w-[50vw]'
+            className='relative text-center max-w-[50vw] md:w-[60vw] md:max-w-[60vw]'
             src={heroFrase}
             alt='Aquelarre comunidad creativa'
             width={550}
