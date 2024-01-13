@@ -64,21 +64,35 @@ const BlogGrid = ({posts}) => {
           {visiblePosts.map((post, index) => (
             <div className={`col-span-1 h-40 w-auto post-item`}>
               <PostGridCard key={index} post={post.node} />
+              {/* {post} */}
             </div>
           ))}
         </div>
-        <div className="z-20 relative">
+        <div className="z-20 flex justify-between">
           {startIdx > 0 && (
             <button onClick={handleLoadPrevious} className="z-20 bg-red-600 w-8 h-8 cursor-pointer rounded-full text-center">
               &#10094;
             </button>
           )}
           {startIdx + postsPerLoad < allPosts.length && (
-            <button onClick={handleLoadMore} className='z-20 relative left-[100%] bg-red-600 w-8 h-8 cursor-pointer  rounded-full text-center'>
+            <button onClick={handleLoadMore} className='z-20 relative bg-red-600 w-8 h-8 cursor-pointer  rounded-full text-center'>
               &#10095;
             </button>
           )}
         </div>
+        {startIdx + postsPerLoad < allPosts.length && (
+            
+          <div className='flex justify-end'>
+          <Image
+          unoptimized
+          alt={'Click para mas noticias'}
+          height={150}
+          width={200}
+          className='clickparamas'
+          src={'/img/clickparamas.png'}
+          />
+        </div>
+          )}
       </div>
     );
   };

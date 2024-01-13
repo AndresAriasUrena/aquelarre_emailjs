@@ -52,6 +52,7 @@ const Header = () => {
 
     return (
       //lg:bg-[#141316]
+      // Hamburger MENU
         <div className='container mx-auto px-10 lg:py-4'>
           <div
             className={`nav-links fixed flex items-left p-20 flex-col justify-evenly bg-left bg-norepeat bg-cover z-40 h-full w-full text-white uppercase ${
@@ -83,8 +84,8 @@ const Header = () => {
                 >
                   <span className='relative font-semibold'>
                     Podcast: El oráculo
-                    <div className='absolute top-1/2'>
-                    <Image unoptimized alt={'proximamente'} height={125} width={150} className='proximamente cursor-pointer' src={proximamente} />
+                    <div className='absolute -top-[2px]'>
+                    <Image unoptimized alt={'proximamente'} height={125} width={150} className='proximamente-mb cursor-pointer' src={proximamente} />
                     </div>
                   </span>
                 </Link>
@@ -94,8 +95,8 @@ const Header = () => {
                 >
                   <span className='relative font-semibold'>
                   Agenda Cultural
-                    <div className='absolute top-1/2'>
-                    <Image unoptimized alt={'noDisponible'} height={125} width={150} className='noDisponible cursor-pointer' src={noDisponible} />
+                    <div className='absolute top-0'>
+                    <Image unoptimized alt={'noDisponible'} height={125} width={150} className='noDisponible-mb cursor-pointer' src={noDisponible} />
                     </div>
                   </span>
                 </Link>
@@ -103,10 +104,10 @@ const Header = () => {
                   className=''
                   href={'/'}
                 >
-                  <span className='relative font-semibold'>
+                  <span className='relative font-semibold pr-[60px]'>
                     Mercado
-                    <div className='absolute top-1/2'>
-                    <Image unoptimized alt={'noDisponible'} height={125} width={150} className='noDisponible cursor-pointer' src={noDisponible} />
+                    <div className='absolute top-0'>
+                    <Image unoptimized alt={'noDisponible'} height={125} width={150} className='noDisponible-mb  cursor-pointer' src={noDisponible} />
                     </div>
                   </span>
                 </Link>
@@ -116,13 +117,13 @@ const Header = () => {
                 >
                   <span className='relative font-semibold'>
                     Oportunidades
-                    <div className='absolute top-1/2'>
-                    <Image unoptimized alt={'noDisponible'} height={125} width={150} className='noDisponible cursor-pointer' src={noDisponible} />
+                    <div className='absolute top-0'>
+                    <Image unoptimized alt={'noDisponible'} height={125} width={150} className='noDisponible-mb  cursor-pointer' src={noDisponible} />
                     </div>
                   </span>
                 </Link>
           </div>
-    
+    {/* Header Nav link */}
           <div className='w-full inline-block lg:py-4'>
             <div className='hidden lg:flex justify-between text-white items-center uppercase'>
               <Link href='/'>

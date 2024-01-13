@@ -29,7 +29,7 @@ const PostDetails = ({post}) => {
                       <p className='font-medium text-gray-700 mx-2 inline align-middle'>|</p>
                       <span className='font-medium text-gray-700 text-sm lg:text-md'>{moment(post.createdAt).format('DD MMM, YYYY')}</span>
                     </div>
-                    <div className='pt-8 relative z-20'>
+                    <div className='py-4 mb-8 relative z-20'>
                       <AdjacentPosts slug={post.slug} createdAt={post.createdAt}/>
                     </div>
                     {/* <CommentsForm slug={post.slug}/>
