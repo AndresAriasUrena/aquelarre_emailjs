@@ -149,7 +149,7 @@ const Footer = () => {
     };
 
   return (
-    <div className='absolute w-full z-10 translate-y-[-10%] md:translate-y-[-30%]'>
+    <div className='absolute w-full z-10 translate-y-[-10%] md:translate-y-[-25%]'>
     <Image 
         className='relative max-h-40 w-full md:hidden'
         src='/img/footer-top-mb.png'

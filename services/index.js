@@ -125,7 +125,7 @@ export const getPostsDetails = async (slug) =>{
                     slug
                 }
                 contenido {
-                    raw
+                    json
                 }
             }
         }

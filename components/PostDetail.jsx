@@ -69,7 +69,7 @@ const PostDetail = ({post}) => {
                     className='object-top h-full w-full'
                 />
             </div>
-            {post.contenido.raw.children.map((typeObj, index) =>{
+            {post.contenido.json.children.map((typeObj, index) =>{
                 const children = typeObj.children.map((item, itemIndex) => getContentFragment(itemIndex, item.text, item))
 
                 return getContentFragment(index, children, typeObj, typeObj.type)
