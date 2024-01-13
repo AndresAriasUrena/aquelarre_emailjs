@@ -1,6 +1,7 @@
 import {useState, useRef, useEffect} from 'react';
 import Image from 'next/image';
 
+import { ParticleCanvas } from './canvas';
 const Hero = () => {
     const [windowWidth, setWindowWidth] = useState(0);
 
@@ -39,13 +40,14 @@ const Hero = () => {
         <div className='lg:row-start-3 row-start-1 row-span-5 lg:row-span-8 lg:m-auto flex items-center justify-center'>
           {/* Your image or content for the first section */}
           <Image
-            className='relative text-center max-w-[45vw]'
+            className='relative md:hidden text-center max-w-[45vw]'
             src={heroImg}
             alt='Aquelarre comunidad creativa'
             width={550}
             height={241}
             priority
           />
+          <ParticleCanvas/>
         </div>
         <div className='lg:row-start-11 row-start-6 row-span-4 h-auto lg:row-span-3 lg:m-auto flex items-center justify-center'>
           {/* Your image or content for the second section */}
