@@ -1,28 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import dynamic from 'next/dynamic';
+import Select, {styles} from 'react-select';
 
 import { PostGridCard, FeaturedPostCard } from '../components';
-import { getFeaturedPosts, getSimilarPosts, getPosts } from '../services';
+import { getCategories } from '../services';
+
 
 // const BlogGrid = dynamic(() => import ('../sections/GridCarousel'));
 
 const BlogGrid = ({posts}) => {
     const [windowWidth, setWindowWidth] = useState(0);
-    // const [featuredPosts, setFeaturedPosts] = useState([]);
-    // const [posts, setPosts] = useState([]);
-
-    // useEffect(() => {
-    //   getFeaturedPosts().then((result) => {
-    //     setFeaturedPosts(result);
-    //   });
-    // }, []);
-
-    // useEffect(() => {
-    //   getPosts().then((result) => {
-    //     setPosts(result);
-    //   });
-    // }, []);
     
     useEffect(() => {
         const handleResize = () => {
@@ -48,7 +36,8 @@ const BlogGrid = ({posts}) => {
     // const allPosts = featuredPosts;
     // console.log('BlogGrid')
     // console.log(allPosts);
-    const visiblePosts = allPosts.slice(startIdx, startIdx + postsPerLoad);
+
+    // const visiblePosts = allPosts.slice(startIdx, startIdx + postsPerLoad); Comented to enable filter
   
     const handleLoadMore = () => {
       setStartIdx(startIdx + postsPerLoad);
@@ -57,9 +46,95 @@ const BlogGrid = ({posts}) => {
     const handleLoadPrevious = () => {
       setStartIdx(Math.max(0, startIdx - postsPerLoad));
     };
+
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+      getCategories()
+      .then((newCategories) => setCategories(newCategories))
+    }, [])
+
+    const [selectedCategory, setSelectedCategory] = useState(null);
+
+    const filteredPosts = selectedCategory
+    ? allPosts.filter(
+        (post) =>
+          post.node.categorias &&
+          post.node.categorias.some((category) => category.name === selectedCategory)
+      )
+    : allPosts;
+
+    const visiblePosts = filteredPosts.slice(startIdx, startIdx + postsPerLoad);
+
+
+    const handleCategoryChange = (selectedOption) => {
+      setSelectedCategory(selectedOption?.value || null);
+      setStartIdx(0); // Reset start index when changing categorys
+    };
+
+    const options = [
+      { value: '', label: 'Todas las categorías' },
+      ...categories.map((category) => ({ value: category.name, label: category.name })),
+    ];
+
+    const customStyles = {
+      control: (provided, state) => ({
+        ...provided,
+        backgroundColor: '#dc2626', // Replace with your desired background color
+        color: '#FFF',
+        border: 'none',
+        maxHeight: '30px',
+        // Add other styles as needed
+      }),
+      option: (provided, state) => ({
+        ...provided,
+        backgroundColor: 'none',
+        // backgroundColor: state.isSelected ? '#000' : '#F00', // Replace with your desired colors
+        borderColor: state.isSelected ? '#000' : '#dc2626', // Replace with your desired colors
+        ':hover': {
+          backgroundColor: '#2c2c2c', // Replace with your desired hover color
+        },
+        // Add other styles as needed
+      }),
+      singleValue: (provided, state) =>({
+        ...provided,
+        color: '#FFF'
+      }),
+      menu: (provided,state) =>({
+        ...provided,
+        backgroundColor: '#dc2626'
+      }),
+      placeholder: (provided, state) =>({
+        ...provided,
+        color: '#FFF'
+      })
+      // Add other styles for the rest of the components (e.g., menu, placeholder, etc.) as needed
+  };
+
   
     return (
       <div className="mb-8">
+        {/* Use the React Select component */}
+        <Select
+          options={options}
+          value={options.find((option) => option.value === selectedCategory)}
+          onChange={handleCategoryChange}
+          styles={customStyles}
+          className=' p-0 custom-select w-36 text-xs uppercase mb-4 text-bold h-auto !lg:absolute lg:left-[50%] lg:transform lg:translate-x-[280px] lg:z-10'
+          placeholder = 'Categorías'
+        />
+        {/* <select
+          onChange={handleCategoryChange}
+          value={selectedCategory || ''}
+          className="custom-select mb-4 p-2 border rounded-md bg-red-600 lg:absolute lg:left-[50%] lg:transform lg:translate-x-[280px] lg:z-10"
+        >
+          <option value="">Todas las categorías</option>
+          {categories.map((category) => (
+            <option key={category.slug} value={category.name} className='hover:bg-red-600'>
+              {category.name}
+            </option>
+          ))}
+        </select> */}
         <div className={`grid grid-cols-2 md:grid-cols-3 gap-4 min-h-[590px]`}>
           {visiblePosts.map((post, index) => (
             <div className={`col-span-1 h-40 w-auto post-item`}>

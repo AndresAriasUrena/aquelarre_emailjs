@@ -108,6 +108,17 @@ footer {
   span:hover .noDisponible-mb {
       display: block;
   }
+  .custom-select option{
+    background-color: #fff;
+  }
+  .custom-select option:hover {
+    background: rgb(220 38 38);
+  }
+  @media (min-width:1024px){
+    .custom-select {
+      position: absolute !important;
+    }
+}
 
 }
 
