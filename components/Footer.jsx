@@ -210,7 +210,7 @@ const Footer = () => {
       </div>
       <div>
       <Image
-          className='absolute md:block max-h-28 -translate-x-4 hidden bottom-8'
+          className='absolute lg:block max-h-28 -translate-x-4 hidden bottom-8'
           src='/img/malasuerte.png'
           alt='o tendras mala suerte'
           width={250}

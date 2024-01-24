@@ -17,6 +17,7 @@ import dynamic from 'next/dynamic';
 const PostCard = dynamic(()=> import('../components/PostCard'));
 const Hero = dynamic(()=> import('../components/Hero'));
 const LoUltimo = dynamic(()=> import('../components/LoUltimo.jsx'));
+const Podcast = dynamic(()=> import('../components/Podcast.jsx'));
 const TodasLasNoticias = dynamic(()=> import('../components/TodasLasNoticias'));
 
 // const FeaturedPosts = dynamic(()=> import('../sections/FeaturedPosts'));
@@ -220,6 +221,7 @@ export default function Home({posts}) {
       <div className='container mx-auto pt-8 lg:pt-0 px-8 mb-8 lg:px-0 lg:mb-0'>
 
         <Hero/>
+        <Podcast/>
         <LoUltimo/>
 
         {/* <UltimasNoticias/>

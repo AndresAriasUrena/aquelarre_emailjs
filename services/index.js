@@ -273,3 +273,26 @@ export const getEditorialPosts = async () => {
   
     return result.postsConnection.edges;
   };
+
+  //Podcast
+  export const getLatestPodcast = async () => {
+    const query = gql`
+      query GetLatestPodcast() {
+        podcasts(
+          orderBy: createdAt_ASC
+          last:1
+          ) {
+          youtubeLink
+          spotifyLink
+          thumbnail {
+            url
+          }
+          createdAt
+        }
+      }   
+    `;
+  
+    const result = await request(graphqlAPI, query);
+  
+    return result.podcasts;
+  };

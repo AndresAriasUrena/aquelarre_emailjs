@@ -21,7 +21,7 @@ const LoUltimo = () => {
 
   return (
     <div
-      className=" relative h-auto lg:h-screen bg-top -mt-8 bg-no-repeat bg-cover"
+      className=" relative h-auto lg:h-screen bg-top -mt-4 bg-no-repeat bg-cover"
       style={{ backgroundImage: `url('/img/loUltimo-bg.png')` }}
     >
         <div className='z-20 relative pt-16 xl:pt-24 grid grid-cols-1 lg:grid-cols-12 gap-12 text-white'>

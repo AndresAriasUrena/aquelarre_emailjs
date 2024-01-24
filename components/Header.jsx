@@ -40,6 +40,7 @@ const Header = () => {
 
     function toggleMenu() {
         setshowMenu(!showMenu);
+        setHeading('clean');
         // navLinkDiv.classList.toggle('right-[0%]')
     }
 
@@ -49,6 +50,9 @@ const Header = () => {
       getCategories()
       .then((newCategories) => setCategories(newCategories))
     }, [])
+
+    const [heading, setHeading] = useState('');
+
 
     return (
       //lg:bg-[#141316]
@@ -78,20 +82,29 @@ const Header = () => {
                   </span>
                 </Link>
             ))}
-            <Link
-                  className=''
-                  href={'/'}
+            <div
+                  className='cursor-pointer group'
+                
                 >
-                  <span className='relative font-semibold'>
+                  <span className='relative font-semibold' onClick={()=>setHeading('podcast')}>
                     Podcast: El oráculo
                     <div className='absolute -top-[2px]'>
-                    <Image unoptimized alt={'proximamente'} height={125} width={150} className='proximamente-mb cursor-pointer' src={proximamente} />
+                    {/* <Image unoptimized alt={'proximamente'} height={125} width={150} className='proximamente-mb cursor-pointer' src={proximamente} /> */}
+                    </div>
+                    <div className={`${heading === 'podcast' ? 'lg:hidden': 'hidden'}`}>
+                      <div>
+                        <Link className='hover:text-red-600' onClick={toggleMenu} href={'https://www.youtube.com/channel/UCgF-dbl_-dNJ2nHReBTFryA'} target='_blank' rel='noopener noreferrer'>Ver en youtube</Link>
+                      </div>
+                      <div>
+                        <Link className='hover:text-red-600' onClick={toggleMenu} href={'https://open.spotify.com/user/31rog7ld647x3tvujn4bff2ou7hm?si=f0c24c456f0b481e&nd=1&dlsi=1043fa5bd0484ded'} target='_blank' rel='noopener noreferrer'>Escruchar en spotify</Link>
+                      </div>
                     </div>
                   </span>
-                </Link>
+                </div>
                 <Link
                   className=''
                   href={'/'}
+                  onClick={()=>setHeading('agenda')}
                 >
                   <span className='relative font-semibold'>
                   Agenda Cultural
@@ -103,6 +116,7 @@ const Header = () => {
                <Link
                   className=''
                   href={'/'}
+                  onClick={()=>setHeading('mercado')}
                 >
                   <span className='relative font-semibold pr-[60px]'>
                     Mercado
@@ -114,6 +128,7 @@ const Header = () => {
                <Link
                   className=''
                   href={'/'}
+                  onClick={()=>setHeading('oportunidades')}
                 >
                   <span className='relative font-semibold'>
                     Oportunidades
@@ -150,17 +165,29 @@ const Header = () => {
                   </span>
                 </Link>
               ))}
-               <Link
+               <div
                   className=''
-                  href={'/'}
+
                 >
-                  <span className='relative font-semibold'>
-                    Podcast: El oráculo
-                    <div className='absolute -top-2'>
-                    <Image unoptimized alt={'proximamente'} height={200} width={300} className='proximamente cursor-pointer' src={proximamente} />
+                  <div className='lg:cursor-pointer group'>
+                    <span className='relative font-semibold'>
+                      Podcast: El oráculo
+                      <div className='absolute -top-2'>
+                      {/* <Image unoptimized alt={'proximamente'} height={200} width={300} className='proximamente cursor-pointer' src={proximamente} /> */}
+                      </div>
+                    </span>
+                    <div className='absolute hidden group-hover:block hover:block'>
+                      <div>
+                        <div>
+                          <Link className='hover:text-red-600' href={'https://www.youtube.com/channel/UCgF-dbl_-dNJ2nHReBTFryA'} target='_blank' rel='noopener noreferrer'>Ver en youtube</Link>
+                        </div>
+                        <div>
+                        <Link className='hover:text-red-600' href={'https://open.spotify.com/user/31rog7ld647x3tvujn4bff2ou7hm?si=f0c24c456f0b481e&nd=1&dlsi=1043fa5bd0484ded'} target='_blank' rel='noopener noreferrer'>Escruchar en spotify</Link>
+                        </div>
+                      </div>
                     </div>
-                  </span>
-                </Link>
+                  </div>
+                </div>
                <Link
                   className=''
                   href={'/'}
