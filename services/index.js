@@ -275,7 +275,11 @@ export const getEditorialPosts = async () => {
   };
 
   //Podcast
+
+  const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
   export const getLatestPodcast = async () => {
+    await delay(200);
     const query = gql`
       query GetLatestPodcast() {
         podcasts(
