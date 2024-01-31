@@ -27,7 +27,7 @@ const LatestPodcast = ({podcast}) => {
     return (
         <>
         <Link
-            className='absolute rounded-full m-auto z-20 w-[40%] h-[40vh] transform top-[50%] left-[50%] -translate-y-[50%] -translate-x-[50%]'
+            className='absolute rounded-full m-auto z-20 w-[40%] h-[30vh] md:h-[40vh] transform top-[25%] left-[50%] -translate-y-[50%] -translate-x-[50%]'
             // href={'https://open.spotify.com/user/31rog7ld647x3tvujn4bff2ou7hm?si=f0c24c456f0b481e&nd=1&dlsi=1043fa5bd0484ded'} 
             href={podcast.spotifyLink} 
             target='_blank' 
