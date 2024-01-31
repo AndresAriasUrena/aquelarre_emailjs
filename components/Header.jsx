@@ -93,10 +93,10 @@ const Header = () => {
                     </div>
                     <div className={`${heading === 'podcast' ? 'lg:hidden': 'hidden'}`}>
                       <div>
-                        <Link className='hover:text-red-600' onClick={toggleMenu} href={'https://www.youtube.com/channel/UCgF-dbl_-dNJ2nHReBTFryA'} target='_blank' rel='noopener noreferrer'>Ver en youtube</Link>
+                        <Link className='hover:text-red-600 pl-2' onClick={toggleMenu} href={'https://www.youtube.com/channel/UCgF-dbl_-dNJ2nHReBTFryA'} target='_blank' rel='noopener noreferrer'>Ver en youtube</Link>
                       </div>
                       <div>
-                        <Link className='hover:text-red-600' onClick={toggleMenu} href={'https://open.spotify.com/user/31rog7ld647x3tvujn4bff2ou7hm?si=f0c24c456f0b481e&nd=1&dlsi=1043fa5bd0484ded'} target='_blank' rel='noopener noreferrer'>Escruchar en spotify</Link>
+                        <Link className='hover:text-red-600 pl-2' onClick={toggleMenu} href={'https://open.spotify.com/user/31rog7ld647x3tvujn4bff2ou7hm?si=f0c24c456f0b481e&nd=1&dlsi=1043fa5bd0484ded'} target='_blank' rel='noopener noreferrer'>Escruchar en spotify</Link>
                       </div>
                     </div>
                   </span>
